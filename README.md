@@ -20,4 +20,5 @@ The detail screen shows more info about the selected asset and uses dataBinding 
 
 - I need a designer to supply taste
 - error handling does not distinguish between error types
-- the detail screen data is displayed without much context. 
+- the detail screen data is displayed without much context
+- I ignored the unit testing. Mocking this API is just tedious. 
