@@ -6,13 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kohlwage.boschkraken.R
 import com.kohlwage.boschkraken.databinding.AssetListItemBinding
 import com.kohlwage.boschkraken.models.TradingOverviewItem
-import com.kohlwage.boschkraken.pictures.PictureLoader
 import com.kohlwage.boschkraken.ui.list.TradingAssetListFragment
 
-class AssetPairListViewHolder(
-    private val binding: AssetListItemBinding,
-
-) :
+class AssetPairListViewHolder(private val binding: AssetListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun onBind(item: TradingOverviewItem) {

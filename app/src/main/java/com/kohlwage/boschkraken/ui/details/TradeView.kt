@@ -10,7 +10,7 @@ import com.kohlwage.boschkraken.models.Trade
 /**
  * Displays a trade
  */
-class TradesView(context: Context, parent: ViewGroup, trade: Trade) : ConstraintLayout(context) {
+class TradeView(context: Context, parent: ViewGroup, trade: Trade) : ConstraintLayout(context) {
 
     init {
         ViewTradeBinding.inflate(LayoutInflater.from(context), parent, true)

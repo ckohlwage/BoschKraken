@@ -23,7 +23,6 @@ class NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
-//        builder.addInterceptor(ApiKeyInterceptor())
         if (BuildConfig.DEBUG) {
             val interceptor = HttpLoggingInterceptor()
             builder.addInterceptor(interceptor)
@@ -44,16 +43,4 @@ class NetworkModule {
     @Singleton
     fun provideKrakenService(retrofit: Retrofit): KrakenService = retrofit.create()
 
-
-    inner class ApiKeyInterceptor : Interceptor {
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val original = chain.request();
-            val url = original.url
-            val newUrl = url.newBuilder()
-                .addQueryParameter("api_key", BuildConfig.API_KEY)
-                .build()
-            val request = original.newBuilder().url(newUrl).build()
-            return chain.proceed(request)
-        }
-    }
 }

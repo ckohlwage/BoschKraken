@@ -19,7 +19,7 @@ interface KrakenService {
     ): KrakenResponse<Map<String,TickerResponse>>
 
     @GET("public/Trades")
-    suspend fun lastTrades(
+    suspend fun fetchLastTrades(
         @Query("pair") tradingPair: String,
     ): KrakenResponse<JsonObject>
 

@@ -30,7 +30,7 @@ class TradingListRepository @Inject constructor(
             val assets = service.fetchAssetPairs(null)
             if (assets.error.isEmpty()) {
                 val assetsMap = assets.result
-                val tickerMap = loadTickerInfo(assetsMap.keys.toMutableList())
+                val tickerMap = fetchTickerInfo(assetsMap.keys.toMutableList())
                 emit(Pair(assetsMap, tickerMap))
                 refreshState.emit(false)
                 lastRefresh.emit(System.currentTimeMillis())
@@ -41,7 +41,7 @@ class TradingListRepository @Inject constructor(
         combineAssetAndTicker(it)
     }
 
-    private suspend fun loadTickerInfo(
+    private suspend fun fetchTickerInfo(
         keys: MutableList<String>,
         resultMap: HashMap<String, TickerResponse>? = HashMap()
     ): Map<String, TickerResponse> {

@@ -28,7 +28,7 @@ class TradingDetailRepository @Inject constructor(
         while (true) {
             refreshState.emit(true)
             val assetInfo = krakenService.fetchAssetPairs(assetId)
-            val tradeInfo = krakenService.lastTrades(assetId)
+            val tradeInfo = krakenService.fetchLastTrades(assetId)
             if (assetInfo.error.isEmpty() && tradeInfo.error.isEmpty()) {
                 emit(Pair(assetInfo.result, tradeInfo.result))
                 refreshState.emit(false)

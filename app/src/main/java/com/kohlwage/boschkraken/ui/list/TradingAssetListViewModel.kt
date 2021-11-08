@@ -11,7 +11,7 @@ import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class TradingViewModel @Inject constructor(
+class TradingAssetListViewModel @Inject constructor(
     private val tradingListDataSource: TradingListDataSource
 ) : ViewModel() {
 

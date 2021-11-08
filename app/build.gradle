@@ -15,9 +15,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        // API KEY
-        buildConfigField "String", "API_KEY", "\"38cf814d15e89359a2703e77b1f1e64c\""
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -72,10 +69,6 @@ dependencies {
 
     // ThreeTen
     implementation libs.threeTen
-
-    // Glide
-    implementation libs.glide
-    kapt libs.glideCompiler
 
     implementation libs.appCompat
     implementation libs.activity

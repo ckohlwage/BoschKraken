@@ -22,9 +22,9 @@ import javax.inject.Inject
 class TradingAssetListFragment : Fragment(R.layout.fragment_asset_list) {
 
     @Inject
-    lateinit var assetAdapter: AssetListAdapter
+    lateinit var tradingAssetAdapter: TradingAssetListAdapter
 
-    private val listViewModel: TradingViewModel by activityViewModels()
+    private val listAssetListViewModel: TradingAssetListViewModel by activityViewModels()
 
     private var _binding: FragmentAssetListBinding? = null
     private val binding: FragmentAssetListBinding
@@ -49,7 +49,7 @@ class TradingAssetListFragment : Fragment(R.layout.fragment_asset_list) {
     }
 
     private fun initViews() {
-        binding.assetRecycler.adapter = assetAdapter
+        binding.assetRecycler.adapter = tradingAssetAdapter
         binding.swipeRefresh.setOnRefreshListener {
             job.cancel()
             collectList()
@@ -59,22 +59,22 @@ class TradingAssetListFragment : Fragment(R.layout.fragment_asset_list) {
     private fun collectList() {
         job = lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                listViewModel.getTradingListFlow().collect {
-                    assetAdapter.submitList(it)
+                listAssetListViewModel.getTradingListFlow().collect {
+                    tradingAssetAdapter.submitList(it)
                 }
             }
         }
     }
 
     private fun registerObservers() {
-        listViewModel.error.observe(viewLifecycleOwner, { isError ->
+        listAssetListViewModel.error.observe(viewLifecycleOwner, { isError ->
             binding.error.visibility = if (isError) View.VISIBLE else View.GONE
             binding.swipeRefresh.visibility = if (isError) View.GONE else View.VISIBLE
         })
-        listViewModel.refreshing.observe(viewLifecycleOwner, Observer {
+        listAssetListViewModel.refreshing.observe(viewLifecycleOwner, Observer {
             binding.swipeRefresh.isRefreshing = it
         })
-        listViewModel.lastUpdate.observe(viewLifecycleOwner, Observer {
+        listAssetListViewModel.lastUpdate.observe(viewLifecycleOwner, Observer {
             binding.lastUpdateTime.text = getString(R.string.last_updated, it)
         })
     }

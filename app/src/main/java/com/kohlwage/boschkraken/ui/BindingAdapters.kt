@@ -4,7 +4,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.kohlwage.boschkraken.models.Trade
-import com.kohlwage.boschkraken.ui.details.TradesView
+import com.kohlwage.boschkraken.ui.details.TradeView
 import com.kohlwage.boschkraken.util.DateUtil
 
 
@@ -17,7 +17,7 @@ fun setDateTime(textView: TextView, timeInMillies: Long) {
 fun addTrades(layout: LinearLayout, list: List<Trade>?) {
     layout.removeAllViews()
     list?.forEach {
-        layout.addView(TradesView(layout.context, layout, it))
+        layout.addView(TradeView(layout.context, layout, it))
     }
 
 }

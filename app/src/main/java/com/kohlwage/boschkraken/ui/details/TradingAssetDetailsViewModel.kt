@@ -19,14 +19,14 @@ open class TradingAssetDetailsViewModel @Inject constructor(
         .distinctUntilChanged { old, new -> old == new }
         .asLiveData(viewModelScope.coroutineContext)
 
-    private val _error = MutableLiveData(false)
-    val error: LiveData<Boolean>
-        get() = _error
-
     val lastUpdate: LiveData<String> =
         detailDataSource.lastRefresh
             .map { DateUtil.getTimeFromMillies(it) }
             .asLiveData()
+
+    private val _error = MutableLiveData(false)
+    val error: LiveData<Boolean>
+        get() = _error
 
     suspend fun getDetailFlow() = detailDataSource.fetchAssetDetail(assetId)
         .flowOn(Dispatchers.IO)
