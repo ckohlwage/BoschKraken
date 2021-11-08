@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RIO Kraken</string>
+    <string name="last_trade_price_key">Last Trade Price: </string>
+    <string name="last_trade_volume_key">Last Trade Volume: </string>
+    <string name="volume24hours_key">Volume last 24h: </string>
+    <string name="last_updated">Last updated: %1s</string>
+    <string name="detail_load_error">Could not load asset details! Click to retry!</string>
+    <string name="no_assets">No assets found</string>
+
+    <string name="asset_type">Asset type: %s</string>
+    <string name="margin_call">Margin call: %s</string>
+    <string name="margin_stop">Margin stop: %s</string>
+    <string name="order_min">Order min: %s</string>
+    <string name="fee_currency">Fee currency: %s</string>
+
+    <string name="last_trades_title">Last Trades</string>
+    <string name="price">Price: %s</string>
+    <string name="volume">Volume: %s</string>
+
+</resources>

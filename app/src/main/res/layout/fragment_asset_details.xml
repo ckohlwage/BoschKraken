@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.list.TradingAssetListFragment">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.kohlwage.boschkraken.ui.details.TradingAssetDetailsViewModel" />
+
+        <variable
+            name="details"
+            type="com.kohlwage.boschkraken.models.TradingDetailItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="?actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toTopOf="@id/last_update_time"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/simple_padding_large">
+
+                    <TextView
+                        android:id="@+id/asset_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_large"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:text="@{details.tradingAsset.name}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        tools:text="This is the asset name" />
+
+                    <TextView
+                        android:id="@+id/asset_alternative_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_small"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:text="@{details.tradingAsset.wsname}"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        tools:text="This is the ws name" />
+
+                    <TextView
+                        android:id="@+id/asset_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_large"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:text="@{@string/asset_type(details.tradingAsset.aclassBase)}"
+                        tools:text="This is the asset type" />
+
+                    <TextView
+                        android:id="@+id/margin_call"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_large"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:text="@{@string/margin_call(details.tradingAsset.marginCall)}"
+                        tools:text="This is the asset call" />
+
+                    <TextView
+                        android:id="@+id/margin_stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_large"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:text="@{@string/margin_stop(details.tradingAsset.marginStop)}"
+                        tools:text="This is the margin stop" />
+
+                    <TextView
+                        android:id="@+id/order_min"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_large"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:text="@{@string/order_min(details.tradingAsset.orderMin)}"
+                        tools:text="This is the order min" />
+
+                    <TextView
+                        android:id="@+id/last_trades_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/simple_padding_medium"
+                        android:layout_marginTop="@dimen/simple_padding_large"
+                        android:layout_marginEnd="@dimen/simple_padding_medium"
+                        android:text="@string/last_trades_title"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/trades"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:add_trades="@{details.lastTradesList}"
+                        />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/last_update_time"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/dark_grey_variant"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_load_error"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:visibility="gone"
+            android:gravity="center"
+            app:drawableTopCompat="@drawable/ic_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/simple_padding_medium"
+            android:contentDescription="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">200dp</dimen>
+    <dimen name="simple_padding_small">12dp</dimen>
+    <dimen name="simple_padding_medium">16dp</dimen>
+    <dimen name="simple_padding_large">32dp</dimen>
+</resources>

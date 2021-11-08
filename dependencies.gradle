@@ -1,0 +1,91 @@
+
+def versions = [:]
+versions.kotlin = "1.5.21"
+versions.core_ktx = "1.7.0"
+versions.coroutines = "1.5.1"
+versions.hilt = '2.38.1'
+versions.paging = "3.0.1"
+versions.retrofit = "2.9.0"
+versions.okhttp = "4.9.1"
+versions.lifecycle = "2.3.1"
+versions.navigation = "2.3.5"
+versions.timber = "5.0.1"
+versions.three_ten = "1.3.1"
+versions.glide = "4.12.0"
+versions.appcompat = "1.3.1"
+versions.activity = '1.3.1'
+versions.fragment = "1.3.6"
+versions.swipeRefresh = "1.1.0"
+versions.material = "1.4.0"
+versions.constraint = "2.1.1"
+versions.junit = "4.13.2"
+versions.junitAndroid = "1.1.3"
+versions.espresso = "3.4.0"
+versions.mockito = "3.2.0"
+versions.mockitoCore = "3.2.0"
+versions.testRules = "1.4.0"
+versions.testRunner = "1.4.1"
+versions.testCore = "2.1.0"
+ext.versions = versions
+
+def defaultBuild = [:]
+defaultBuild.compileVersion = 31
+defaultBuild.minSdk = 23
+defaultBuild.targetSdk = 30
+defaultBuild.applicationId = "com.kohlwage.boschkraken"
+ext.defaultBuild = defaultBuild
+
+def pluginVersion = [:]
+pluginVersion.gradle = "7.0.2"
+pluginVersion.kotlin = versions.kotlin
+pluginVersion.hilt = versions.hilt
+ext.pluginVersion = pluginVersion
+
+def libs = [:]
+libs.kotlinStd = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+libs.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+libs.coreKtx = "androidx.core:core-ktx:$versions.core_ktx"
+
+libs.hilt = "com.google.dagger:hilt-android:$versions.hilt"
+libs.hiltCompiler = "com.google.dagger:hilt-compiler:$versions.hilt"
+
+libs.paging = "androidx.paging:paging-runtime-ktx:$versions.paging"
+libs.pagingCommon = "androidx.paging:paging-common-ktx:$versions.paging"
+
+libs.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+libs.retrofitAdapter = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+libs.okhttpLogging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+
+libs.viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+libs.lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+
+libs.navigation = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+libs.navigationUi = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+
+libs.timber = "com.jakewharton.timber:timber:$versions.timber"
+
+libs.threeTen = "com.jakewharton.threetenabp:threetenabp:$versions.three_ten"
+libs.threeTenJava = "org.threeten:threetenbp:$versions.three_ten"
+
+libs.glide = "com.github.bumptech.glide:glide:$versions.glide"
+libs.glideCompiler = "com.github.bumptech.glide:compiler:$versions.glide"
+
+libs.appCompat = "androidx.appcompat:appcompat:$versions.appcompat"
+libs.activity = "androidx.activity:activity-ktx:$versions.activity"
+libs.fragment = "androidx.fragment:fragment-ktx:$versions.fragment"
+libs.swipeRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipeRefresh"
+libs.material = "com.google.android.material:material:$versions.material"
+libs.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
+
+libs.junit = "junit:junit:$versions.junit"
+libs.junitAndroid = "androidx.test.ext:junit:$versions.junitAndroid"
+libs.mockito = "org.mockito.kotlin:mockito-kotlin:$versions.mockito"
+libs.mockitoCore =  "org.mockito:mockito-core:$versions.mockitoCore"
+libs.mockitoInline = "org.mockito:mockito-inline:$versions.mockito"
+libs.testRules = "androidx.test:rules:$versions.testRules"
+libs.testRunner = "androidx.test:runner:$versions.atsl_runner"
+libs.testCore = "androidx.arch.core:core-testing:$versions.testCore"
+libs.espresso = "androidx.test.espresso:espresso-core:$versions.espresso"
+libs.coroutineTests = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines"
+
+ext.libs = libs

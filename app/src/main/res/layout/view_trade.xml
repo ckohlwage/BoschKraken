@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.list.TradingAssetListFragment">
+
+    <data>
+
+        <variable
+            name="trade"
+            type="com.kohlwage.boschkraken.models.Trade" />
+    </data>
+
+    <merge
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
+        >
+
+        <TextView
+            android:id="@+id/last_trade_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/simple_padding_medium"
+            android:layout_marginEnd="@dimen/simple_padding_medium"
+            android:layout_marginTop="@dimen/simple_padding_large"
+            android:text="@{@string/price(trade.price)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is the trade price" />
+
+        <TextView
+            android:id="@+id/last_trade_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/simple_padding_medium"
+            android:layout_marginTop="@dimen/simple_padding_small"
+            android:layout_marginEnd="@dimen/simple_padding_medium"
+            android:layout_marginBottom="@dimen/simple_padding_large"
+            android:text="@{@string/volume(trade.volume)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/last_trade_price"
+            tools:text="This is the trade volume" />
+
+    </merge>
+</layout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="overviewItem"
+            type="com.kohlwage.boschkraken.models.TradingOverviewItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/simple_padding_medium"
+        android:paddingBottom="@dimen/simple_padding_medium">
+
+        <TextView
+            android:id="@+id/asset_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{overviewItem.name}"
+            tools:text="asset name" />
+
+        <TextView
+            android:id="@+id/asset_last_trade_price_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/asset_last_trade_price"
+            app:layout_constraintTop_toBottomOf="@id/asset_name"
+            android:text="@string/last_trade_price_key" />
+
+        <TextView
+            android:id="@+id/asset_last_trade_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintStart_toEndOf="@id/asset_last_trade_price_key"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/asset_last_trade_price_key"
+            app:layout_constraintTop_toTopOf="@id/asset_last_trade_price_key"
+            android:text="@{overviewItem.lastTradePrice}"
+            tools:text="last trade price" />
+
+        <TextView
+            android:id="@+id/asset_last_trade_volume_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/asset_last_trade_volume"
+            app:layout_constraintTop_toBottomOf="@id/asset_last_trade_price_key"
+            android:text="@string/last_trade_price_key" />
+
+        <TextView
+            android:id="@+id/asset_last_trade_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintStart_toEndOf="@id/asset_last_trade_volume_key"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/asset_last_trade_volume_key"
+            app:layout_constraintTop_toTopOf="@id/asset_last_trade_volume_key"
+            android:text="@{overviewItem.lastTradeVolume}"
+            tools:text="volume last trade" />
+
+        <TextView
+            android:id="@+id/asset_volume24_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/asset_volume24"
+            app:layout_constraintTop_toBottomOf="@id/asset_last_trade_volume_key"
+            android:text="@string/volume24hours_key"/>
+
+        <TextView
+            android:id="@+id/asset_volume24"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/simple_padding_medium"
+            android:paddingEnd="@dimen/simple_padding_medium"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintStart_toEndOf="@id/asset_volume24_key"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/asset_volume24_key"
+            app:layout_constraintTop_toTopOf="@id/asset_volume24_key"
+            android:text="@{overviewItem.volume24}"
+            tools:text="mvolume 24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

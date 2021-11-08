@@ -1,0 +1,95 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk defaultBuild.compileVersion
+
+    defaultConfig {
+        applicationId defaultBuild.applicationId
+        minSdk defaultBuild.minSdk
+        targetSdk defaultBuild.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        // API KEY
+        buildConfigField "String", "API_KEY", "\"38cf814d15e89359a2703e77b1f1e64c\""
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    // Kotlin
+    implementation libs.kotlinStd
+    implementation libs.coreKtx
+    implementation libs.coroutines
+    implementation libs.lifecycleRuntime
+
+    // Hilt
+    implementation libs.hilt
+    kapt libs.hiltCompiler
+
+    // Paging
+    implementation libs.paging
+    implementation libs.pagingCommon
+
+    // Retrofit
+    implementation libs.retrofit
+    implementation libs.retrofitAdapter
+    implementation libs.okhttpLogging
+
+    // ViewModel
+    implementation libs.viewModel
+
+    // Navigation
+    implementation libs.navigation
+    implementation libs.navigationUi
+
+    // Timber
+    implementation libs.timber
+
+    // ThreeTen
+    implementation libs.threeTen
+
+    // Glide
+    implementation libs.glide
+    kapt libs.glideCompiler
+
+    implementation libs.appCompat
+    implementation libs.activity
+    implementation libs.fragment
+    implementation libs.swipeRefresh
+    implementation libs.material
+    implementation libs.constraint
+
+    testImplementation libs.junit
+    testImplementation libs.testRules
+    testImplementation libs.testCore
+    testImplementation libs.mockito
+    testImplementation libs.mockitoInline
+    testImplementation libs.threeTenJava
+    androidTestImplementation libs.junitAndroid
+    androidTestImplementation libs.espresso
+}
